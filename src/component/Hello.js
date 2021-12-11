@@ -1,31 +1,21 @@
+import { useState } from "react"; 
+
 export default function Hello(){
-    function showName() {
-        console.log("suhvin");
-    }
+    // let name = "suhvin";
+    const [name, setName] = useState('suhvin');
+    // useState()는 배열을 반환한다
+    // 배열의 구조분해
 
-    function showAge(age) {
-        console.log(age);
-    }
-
-    function showText(txt) {
-        console.log(txt);
+    function changeName() {
+        const newName = name === "suhvin" ? "kevin" : "suhvin";
+        setName(newName);
+        // setName(name === "suhvin" ? "kevin" : "suhvin");
     }
 
     return (
         <div> 
-            <h1>Hello</h1>
-            <button onClick={showName}>Show name</button>
-            <button 
-                onClick={() => {
-                    showAge(24);
-                }}
-            >Show age</button>
-            <input type="text" onChange={e => {
-                const txt = e.target.value;
-                // e는 발생한 이벤트, e.target은 이벤트가 발생한 태그 
-                // e.target.value는 이벤트가 발생한 태그의 값
-                showText(txt);
-            }}/>
+            <h2 id="name">{name}</h2>
+            <button onClick={changeName}>Change</button>
         </div>
     );
 }

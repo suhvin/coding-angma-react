@@ -1,0 +1,80 @@
+[state]
+
+state는 컴포넌트가 가진 속성값
+속성값이 변하면 react는 자동으로 ui를 업데이트 해준다
+개발자는 state만 잘 관리하면 
+화면을 그려주는 과정은 신경쓰지 않아도 된다 
+
+export default function Hello(){
+    let name = "suhvin";
+
+    function changeName() {
+        name = name === "suhvin" ? "kevin" : "suhvin";
+        console.log(name);
+    }
+
+    return (
+        <div> 
+            <h1>state</h1>
+            <h2>{name}</h2>
+            <button onClick={changeName}>Change</button>
+        </div>
+    );
+}
+
+이러면 버튼을 아무리 눌러도 UI에 변화가 없지만
+콘솔창을 보면 이름이 suhvin, kevin 계속 바뀌면서 찍히고 있다
+name은 바뀌었는데 dom 업데이트가 안된거다
+name이 state가 아니기 때문이다
+name은 그냥 변수이고 컴포넌트가 관리하는 상태값이 아니다
+
+그래서 UI를 업데이트 하려면...
+export default function Hello(){
+    let name = "suhvin";
+
+    function changeName() {
+        name = name === "suhvin" ? "kevin" : "suhvin";
+        console.log(name);
+        **document.getElementById("name").innerText = name;
+    }
+
+    return (
+        <div> 
+            <h1>state</h1>
+            <h2 id="name">{name}</h2>
+            <button onClick={changeName}>Change</button>
+        </div>
+    );
+}
+
+** useState **
+Hook API를 이용해 state 사용가능(react 16.8부터)
+직접 자신만의 Hook를 제작할 수 있음
+
+import { useState } from "react"; 
+
+export default function Hello(){
+    const [name, setName] = useState('suhvin');
+    // useState()는 배열을 반환한다
+    // 배열의 구조분해
+
+    function changeName() {
+        const newName = name === "suhvin" ? "kevin" : "suhvin";
+        setName(newName);
+    }
+
+    return (
+        <div> 
+            <h2 id="name">{name}</h2>
+            <button onClick={changeName}>Change</button>
+        </div>
+    );
+}
+
+useState에는 name의 초기값을 넣고 그러면 배열을 반환한다(구조분해)
+setName은 UI를 세팅하는 함수다
+
+만약 Hello 컴포넌트를 App에 3개를 넣어도 
+각 컴포넌트는 state에 의해 개별로 동작한다
+즉, 어떤 건 suhvin이면서 어떤 건 kevin일 수 있다 
+
