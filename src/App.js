@@ -1,6 +1,5 @@
 import './App.css';
 import Hello from './component/Hello'
-import styles from "./App.module.css"
 
 
 // class는 자바스크립트 예약어이기 때문에 className으로 써줘야 함
@@ -12,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <Hello/> 
-      <div className={styles.box}>app</div>
     </div>
     );
 }

@@ -1,0 +1,45 @@
+[이벤트 처리]
+
+1. 미리 함수 만들고 전달
+export default function Hello(){
+    function showName() {
+        console.log("suhvin");
+    }
+
+    return (
+        <div> 
+            <h1>Hello</h1>
+            <button onClick={showName}>Show name</button>
+            <button>Show age</button>
+        </div>
+    );
+}
+
+만약 onClick={showName()} 으로 쓰면 
+return이 반환되어야 함으로 원하는대로 콘솔창에 로그가 나오지는 않는다
+
+2. onClick 옆에 함수 직접 작성
+<button 
+    onClick={() => {
+        console.log(24);
+    }}
+>Show age</button>
+
+이 방법의 장점은 매개변수를 전달하기 편하다는 점
+function showAge(age) {
+    console.log(age);
+}
+<button 
+    onClick={() => {
+        showAge(24);
+    }}
+>Show age</button>
+
+** input 태그의 경우 **
+<input type="text" onChange={e => {
+    console.log(e.target.value);
+}}/>
+
+onChange 활용
+e는 발생한 이벤트, e.target은 이벤트가 발생한 태그 
+e.target.value는 이벤트가 발생한 태그의 값
