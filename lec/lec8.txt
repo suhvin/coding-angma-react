@@ -1,0 +1,74 @@
+[더미 데이터]
+
+더미 데이터 구현을 위해서
+src > db > data.json 파일을 만든다
+{
+    "days" : [
+        {"id": 1, "day": 1}
+    ],
+    "words" : [
+        {
+            "id" : 1,
+            "day" : 1,
+            "eng" : "book",
+            "kor" : "책",
+            "isDone" : false
+        },
+        {
+            "id" : 2,
+            "day" : 1,
+            "eng" : "apple",
+            "kor" : "사과",
+            "isDone" : false
+        }
+    ]
+}
+-> 보다시피 json은 객체와 배열이 섞여있는 형태이다
+
+
+import dummy from "../db/data.json";
+: 더미 데이터를 불러올 때는 import를 통해서 불러온다
+: import한 파일에서 json의 이름은 dummy가 된다
+
+export default function DayList() {
+    console.log(dummy);
+    return (
+        <ul className="list_day">
+            {dummy.days.map(day => (
+                <li key={day.id}>Day {day.day}</li>
+            ))}
+        </ul>
+    );
+}
+: map() 반복문을 이용했다
+: map의 인자인 day는 dummy 파일의 days 배열의 각 요소를 뜻한다
+: 반복문으로 UI가 생성될 때 key값으로 고유하게 구분되어야 한다
+: day.id와 day.day는 days 배열의 각 요소(객체)의 프로퍼티이다
+
+
+기존 배열에 filter를 이용해서 새로운 배열을 만들 수도 있다
+import dummy from "../db/data.json";
+
+export default function Day() {
+    
+    const day = 1;
+    const wordList = dummy.words.filter(word => word.day === day);
+    console.log(wordList);
+
+    return (
+    <div>
+        <table>
+            <tbody>
+                {wordList.map(word => (
+                <tr key={word.id}>
+                    <td>{word.eng}</td>
+                    <td>{word.kor}</td>
+                </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+    );
+}
+: filter로 words 배열의 요소(객체)중 
+프로퍼티 day가 1인 요소만 모아 새로운 배열 wordList를 만들었다
