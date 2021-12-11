@@ -1,0 +1,64 @@
+[라우터 구현]
+
+npm install react-router-dom
+: react-router-dom이 필요해서 따로 설치가 필요
+
+App.js 파일에 import
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+
+function App() {
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Header/>
+          <Routes>
+            <Route exact path="/" element={<DayList/>}/>
+            <Route path="/day" element={<Day/>}/>
+          </Routes>
+        </div>
+      </BrowserRouter>
+      );
+  }
+
+: return 내부 div를 <BrowserRouter>로 감싼다
+: Header는 모든 페이지에 공통이므로 Switch 밖에 있다
+: Routes 내부가 path(url)에 따라 변경되는 컴퍼넌트이다
+: Route path가 "/"이면 첫 페이지를 의미한다
+: 원래는 exact가 있어야 "/day"에 "/"가 아니라 "/day"를 갔었는데 버전(v6)이 바뀌면서 필요 없어짐
+: 무조건 디폴트로 exact가 없어도 exact이다
+: 만약 원래 exact가 없던 것과 같은 효과를 내려면 "/day" 아니고 "day/*"
+: "day/*" 이렇게 하면 day로 시작하는 모든 것이 여기에 걸림
+
+
+html은 href를 사용하지만 react-router는 link라는 것을 사용함
+그러나 react에서 Link이지 실제로 html보면 a태그로 변환되어 있음  
+import { Link } from "react-router-dom"
+: Link import
+
+<Link to={`/day/${day.day}`}>
+    Day {day.day}
+</Link>
+: to 사용해서 path 설정
+: path를 동적으로 설정하려면 백틱과 ${} 사용
+
+App.js에서 day/??? 형태의 path를 동시에 처리하려면...
+<Route path="/day/:day" element={<Day/>}/>
+이렇게 하면 path(url)의 파라미터를 Day 컴포넌트에서 사용가능 
+
+Day 컴포넌트에서 넘어온 파라미터를 사용하려면
+import { useParams } from "react-router-dom"
+
+const a = useParams();
+const day = a.day;
+: a는 url 파라미터 객체, day는 객체 a의 프로퍼티
+
+const {day} = useParams(); 
+: 이렇게 축약 가능
+
+명시하지 않은 주소를 쓰면 아무것도 나오지 않는다
+이런 경우를 위해서 명시하지 않은 주소 전용 페이지를 만든다
+<Route path="*" element={<EmptyPage/>}/>
+: <Route> 중 가장 밑에 있어야 한다
+: 만약 맨 위에 있다면 어떤 path로 들어가도 EmptyPage 컴포넌트가 나온다
+
+
