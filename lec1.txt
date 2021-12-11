@@ -1,0 +1,39 @@
+[react 설치]
+
+youtube_lecture#3에서 cmd를 열고 "npx create-react-app voca" 명령
+youtube_lecture#3 아래에 voca 폴더 생성
+
+생성된 voca 폴더에서 터미널을 열어 "npm start"명령 
+브라우저 자동으로 열림
+
+voca > App.js 
+"Edit <code>src/App.js</code> and save to reload." 수정
+브라우저에 바로 반영
+
+voca > node_modules
+프로젝트를 실행할 때 사용되는 dependecy module들이 모여있음
+여기에 설치되어 있는 내용들은 package.json 파일에 기록되어 있음
+node_modules 폴더를 지우더라도(폴더를 지우면 프로젝트 띄울 수 없음)
+npm install만 해주면 그대로 다시 설치가능(package.json 파일만 수정이 안되면)
+그래서 git에 올릴 때도 node_modules 폴더를 올리지 않는다(크기가 커서)
+
+voca > public
+index.html을 보면 div(id="root") 밑에 있는 코드들이 구현됨
+
+voca > src
+대부분의 작업은 여기서 이루어짐
+App.test는 이 강좌에서 다루지 않아서 지움
+index.js를 보면 App.js 파일을 import 한다
+id="root"에 App을 랜더링 시켜준다
+reportWebVitals()는 퍼포먼스 관련인데 필요없어서 지운다
+
+이제 App.js에서 코드를 구현한다
+여기서 뭔가를 작성하거나 수정하고 조정하게 되면 브라우저에 바로 반영된다
+이걸 HMR(Hot Module Replacement)이라고 부른다
+
+터미널에서 ctrl+c를 누르면 프로젝트를 내린다
+npm start로 다시 띄울 수 있는데 그 명령어는 package.json에 명시되어 있다
+start : 개발모드로 프로그램을 실행
+build : 실제 배포 모드로 만들어주는 것
+test : 테스트
+eject : 내부 설정 파일을 꺼내는 역할, 설정을 변경하고 싶을 때 사용가능

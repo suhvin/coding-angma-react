@@ -1,0 +1,9 @@
+[컴포넌트]
+
+voca > src > App.js
+초기에는 하나의 컴포넌트(App 컴포넌트)만 존재
+App 컴포넌트는 함수로 만들어지고, default로 export
+그리고 index.js에서 App.js를 import 해서 사용
+이렇게 함수로 만들어진 컴포넌트를 함수형 컴포넌트라고 한다
+모든 컴포넌트는 대문자로 시작해야 한다
+함수형 컴포넌트가 return하는 건 JSX(JavaScript XML)이다(html처럼 생겼다)
