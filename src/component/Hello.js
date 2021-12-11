@@ -1,21 +1,21 @@
 import { useState } from "react"; 
+import UserName from "./UserName";
 
-export default function Hello(){
-    // let name = "suhvin";
+export default function Hello({age}){
     const [name, setName] = useState('suhvin');
-    // useState()는 배열을 반환한다
-    // 배열의 구조분해
-
-    function changeName() {
-        const newName = name === "suhvin" ? "kevin" : "suhvin";
-        setName(newName);
-        // setName(name === "suhvin" ? "kevin" : "suhvin");
-    }
+    const msg = age > 19 ? "성인입니다" : "미성년자 입니다";
 
     return (
         <div> 
-            <h2 id="name">{name}</h2>
-            <button onClick={changeName}>Change</button>
+            <h2 id="name">
+                {name}({age}) : {msg}
+            </h2>
+            <UserName name={name}/>
+            {/* 이 name은 Hello에서는 state 이지만
+            userName에서는 props이다*/}
+            <button onClick={() => {
+                setName(name === "suhvin" ? "kevin" : "suhvin");
+            }}>Change</button>
         </div>
     );
 }
