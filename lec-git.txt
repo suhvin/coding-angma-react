@@ -1,0 +1,14 @@
+"voca"에서 git bash창을 연다.
+(모든 작업은 프로젝트 폴더인 voca에서)
+
+git init : git 환경설정 -> .gitignore 파일 생성
+git remote add origin <저장소 url> : 저장소와 연결
+git remote : origin 이라고 출력되면 저장소와 제대로 연결
+git status : 변경된 파일들이 Untracked files로 구분
+git add . : stage에 변경 사항을 올림
+git status : 변경된 파일들이 stage에 올라가 tracked files로 구분
+git commit -m <코멘트> : 현재 코드 상태 캡처
+git push origin master : 원격 저장소에 업로드
+
+git checkout <커밋 번호> : 원하는 커밋 상태로 이동(폴더 내 파일들도 싹 바뀜)
+git checkout master : 최종 커밋 상태로 이동
