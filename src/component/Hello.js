@@ -1,4 +1,4 @@
-import World from "./World";
+import styles from "./Hello.module.css"
 
 // 함수 선언문
 // function Hello(){
@@ -30,9 +30,16 @@ export default function Hello(){
     return (
         <div> {/*반드시 div 혹은 빈태그<> 필요
                 JSX는 무조건 하나의 태그만 들어가야 한다*/}
-            <h1>Hello</h1>
-            <World/>
-            <World/>
+            <h1 style={{
+                    color : 'red',
+                    borderRight : '5px solid #000',
+                    marginBottom : '30px',
+                    opacity : 0.5
+                }}>
+                Hello
+            </h1>
+            {/* 인라인 css 방식 / 무조건 객체 / 속성에 - 안씀 */}
+            <div className={styles.box}>hello</div>
         </div>
     );
 }

@@ -1,0 +1,43 @@
+[CSS]
+
+1. 인라인 CSS
+<h1 style={{
+    color : 'red',
+    borderRight : '5px solid #000',
+    marginBottom : '30px',
+    opacity : 0.5
+}}>
+Hello
+</h1>
+
+인라인 css 방식
+무조건 객체
+속성에 - 안씀 
+
+2. css 파일
+index.css : 전체 페이지에 영향을 주는 css 파일
+App.css : App 컴포넌트와 그 하위 컴포넌트에 영향을 주는 css 파일
+
+App.js에 box란 이름의 div를 만들고 
+App.css에서 .box{}로 style을 준다(빨간색)
+
+Hello.js에 box란 이름의 div를 만들고 
+Hello.css에서 .box{}로 style을 준다(파란색)
+
+css 파일들이 각 컴포넌트에 종속되지 않고 페이지의 헤드 부분에 들어간다
+그러면 div의 className이 box로 같아서 오버라이딩 되버려서 
+더 밑에 있는 box인 Hello의 box로 통일된다
+
+3. module.css 파일
+위와 같은 문제가 안생기게 하기 위해서 Hello.module.css 파일을 만든다
+그리고 Hello.js 파일에서 
+import styles from "./Hello.module.css"
+이렇게 임포트하고 
+className을 'box'가 아닌 {styles.box}로 적는다
+<div className={styles.box}/>
+
+이렇게 하면 글로벌이 아니라 컴포넌트 단위로 관리됨
+같은 box란 이름을 해도
+App_box__해쉬코드
+Hello_box__해쉬코드
+로 자동 변환
