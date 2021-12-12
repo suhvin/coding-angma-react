@@ -1,0 +1,70 @@
+[json-server, REST API]
+
+** 컴포넌트 별로 state가 있으므로 하나하나가 다르게 동작해야 하는 경우 
+따로 컴포넌트를 추가하는 게 좋다 **
+
+Day.js에서
+----------------------------------------------
+{wordList.map(word => (
+  <tr key={word.id}>
+    <td>
+        <input type="checkbox"/>
+    </td>
+    <td>{word.eng}</td>
+    <td>{word.kor}</td>
+    <td>
+        <button>뜻 보기</button>
+        <button class="btn_del">삭제</button>
+    </td>
+  </tr>
+))}
+----------------------------------------------
+이거를
+----------------------------------------------
+{wordList.map(word => (
+  <Word word={word} key={word.id}/>
+))}
+----------------------------------------------
+이거로 바꿈
+: Word라는 새로운 컴포넌트 만들고 props로 word를 넘겨준다
+: map() 반복문 내에서 key값이 필요해서 word.id를 주고 대신 Word 컴포넌트에는 key값이 필요없어진다
+
+** checkbox **
+<input type="checkbox" checked={isDone} onChange={toggleDone}/>
+: checked는 default 상태를 의미하고
+: onChange는 체크박스 클릭 시 실행될 함수를 넣어놓는다
+
+
+** json-server **
++를 눌러 새로운 powershell을 연다
+
+npm install -g json-server 
+: 글로벌 옵션으로 json-server 설치
+
+json-server --watch ./src/db/data.json --port 3001
+: json-server 실행
+
+그러나 처음이면 스트립트 실행 오류가 발생할 수 있다
+: 윈도우 파워 쉘을 열어준다
+: "get-ExecutionPolicy" 커맨드로 현재 실행 규칙을 보면 "Restricted"이다
+: "Set-ExecutionPolicy RemoteSigned" 커맨드로 실행규칙을 "RemoteSigned"로 바꿔준다
+
+json-server 실행
+: 서버가 실행되면 입력한 port에 json-server 생성
+: 3001/days, 3001/words로 접속가능
+
+
+** REST API **
+REST API는 url주소와 메서드로 CRUD 요청을 하는 것
+
+CRUD
+Create : POST
+Read : GET
+Update : PUT
+Delete : DELETE
+
+GET 메서드
+3001/words/2
+3001/words?day=1
+
+

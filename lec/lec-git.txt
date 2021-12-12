@@ -1,3 +1,4 @@
+[Git]
 "voca"에서 git bash창을 연다.
 (모든 작업은 프로젝트 폴더인 voca에서)
 
@@ -12,3 +13,12 @@ git push origin master : 원격 저장소에 업로드
 
 git checkout <커밋 번호> : 원하는 커밋 상태로 이동(폴더 내 파일들도 싹 바뀜)
 git checkout master : 최종 커밋 상태로 이동
+
+[ERROR]
+warning: LF will be replaced by CRLF in package-lock.json.
+: LF, CRLF 혼동으로 인한 에러
+git config core.autocrlf true
+: 윈도우면 이걸로 해결
+: 프로젝트가 아닌 시스템 전체를 설정하고 싶으면 --grobal 옵션 추가
+
+
