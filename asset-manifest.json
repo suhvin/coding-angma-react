@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/coding-angma-react/static/css/main.6ad610ba.chunk.css",
+    "main.js": "/coding-angma-react/static/js/main.a30e92a3.chunk.js",
+    "main.js.map": "/coding-angma-react/static/js/main.a30e92a3.chunk.js.map",
+    "runtime-main.js": "/coding-angma-react/static/js/runtime-main.010aa6f9.js",
+    "runtime-main.js.map": "/coding-angma-react/static/js/runtime-main.010aa6f9.js.map",
+    "static/js/2.3056487a.chunk.js": "/coding-angma-react/static/js/2.3056487a.chunk.js",
+    "static/js/2.3056487a.chunk.js.map": "/coding-angma-react/static/js/2.3056487a.chunk.js.map",
+    "index.html": "/coding-angma-react/index.html",
+    "static/css/main.6ad610ba.chunk.css.map": "/coding-angma-react/static/css/main.6ad610ba.chunk.css.map",
+    "static/js/2.3056487a.chunk.js.LICENSE.txt": "/coding-angma-react/static/js/2.3056487a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.010aa6f9.js",
+    "static/js/2.3056487a.chunk.js",
+    "static/css/main.6ad610ba.chunk.css",
+    "static/js/main.a30e92a3.chunk.js"
+  ]
+}
